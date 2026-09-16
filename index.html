@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Zebulli Wellness - Premium nutraceuticals for joint health, bone support, digestion and everyday wellness.">
+<title>ZÉBULLI WELLNESS | Your Partner in Healthy Living</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#e1bd55; --gold2:#f7df8b; --gold3:#a77e20;
+  --black:#070707; --panel:#11110f; --panel2:#171612;
+  --white:#f8f7f2; --muted:#aaa79d; --line:rgba(225,189,85,.24);
+  --shadow:0 20px 60px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{font-family:Poppins,Arial,sans-serif;background:var(--black);color:var(--white);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{width:50px;height:50px;object-fit:cover;border-radius:8px}
+.logo strong{font-family:Cinzel,serif;color:var(--gold);font-size:1.15rem;letter-spacing:2px}
+.nav-links{display:flex;gap:30px;color:#ddd;font-size:.92rem}
+.nav-links a:hover{color:var(--gold)}
+.menu{display:none;border:1px solid var(--line);background:transparent;color:var(--gold);padding:8px 11px;border-radius:8px;font-size:20px}
+
+.hero{position:relative;overflow:hidden;min-height:700px;display:flex;align-items:center}
+.hero:before{content:"";position:absolute;inset:0;background:
+ radial-gradient(circle at 50% 35%,rgba(225,189,85,.15),transparent 34%),
+ radial-gradient(circle at 10% 90%,rgba(225,189,85,.08),transparent 25%),
+ linear-gradient(120deg,#070707,#10100d 55%,#070707)}
+.hero:after{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(225,189,85,.13);border-radius:50%;right:-180px;top:-130px;box-shadow:0 0 0 45px rgba(225,189,85,.025),0 0 0 90px rgba(225,189,85,.02)}
+.hero-grid{position:relative;z-index:2;width:min(1180px,92%);margin:auto;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--gold2);font-size:.78rem;letter-spacing:2.5px;text-transform:uppercase;border:1px solid var(--line);padding:8px 13px;border-radius:30px;background:rgba(225,189,85,.05)}
+.eyebrow:before{content:"";width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 12px var(--gold)}
+.hero h1{font-family:Cinzel,serif;font-size:clamp(3rem,7vw,5.8rem);line-height:1.02;letter-spacing:4px;margin:22px 0 8px;background:linear-gradient(180deg,#fff0a4,var(--gold),#9e751e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h2{font-family:Cinzel,serif;font-size:clamp(1.1rem,2vw,1.55rem);font-weight:500;color:#fff;margin-bottom:16px;letter-spacing:1px}
+.hero p{color:var(--muted);max-width:610px;font-size:1.03rem}
+.hero-buttons{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 22px;border-radius:30px;font-weight:600;font-size:.92rem;transition:.25s}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#111;box-shadow:0 10px 30px rgba(225,189,85,.18)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(225,189,85,.28)}
+.btn-outline{border:1px solid var(--line);color:var(--gold2);background:rgba(255,255,255,.02)}
+.btn-outline:hover{border-color:var(--gold);background:rgba(225,189,85,.08)}
+.hero-logo{display:flex;justify-content:center}
+.hero-logo img{width:min(420px,78vw);filter:drop-shadow(0 18px 45px rgba(225,189,85,.16));animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-9px)}}
+
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0d0d0b}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{text-align:center;padding:22px 10px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:Cinzel,serif;color:var(--gold);font-size:1.1rem}
+.stat span{font-size:.75rem;color:var(--muted)}
+
+.section{padding:90px 0}
+.section-head{text-align:center;max-width:720px;margin:0 auto 45px}
+.kicker{color:var(--gold);font-size:.75rem;text-transform:uppercase;letter-spacing:3px}
+.section h2{font-family:Cinzel,serif;font-size:clamp(2rem,4vw,3rem);margin:8px 0 12px;color:#fff}
+.section-head p{color:var(--muted)}
+.products{background:linear-gradient(180deg,#070707,#0c0c0a,#070707)}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{position:relative;background:linear-gradient(145deg,#151512,#0d0d0c);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:.3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-7px);border-color:rgba(225,189,85,.65)}
+.product-image{height:340px;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle,rgba(225,189,85,.07),transparent 65%)}
+.product-image img{max-height:100%;max-width:88%;object-fit:contain;filter:drop-shadow(0 14px 22px rgba(0,0,0,.55))}
+.card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.badge{display:inline-block;width:max-content;color:var(--gold2);font-size:.68rem;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--line);background:rgba(225,189,85,.07);padding:5px 9px;border-radius:6px}
+.card h3{font-family:Cinzel,serif;font-size:1.35rem;margin:11px 0 5px}
+.formula{font-size:.78rem;color:var(--muted);min-height:38px}
+.price{font-size:1.55rem;color:var(--gold);font-weight:700;margin:10px 0}
+.benefits{list-style:none;margin:2px 0 18px;color:#d7d5cf;font-size:.82rem}
+.benefits li{margin:6px 0;padding-left:19px;position:relative}
+.benefits li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
+.dose{margin-top:auto;background:#0a0a09;border-left:3px solid var(--gold);padding:9px 11px;border-radius:0 8px 8px 0;color:#c9c6bd;font-size:.75rem;margin-bottom:14px}
+.order{width:100%;text-align:center;border:1px solid var(--gold);color:var(--gold2);padding:11px;border-radius:9px;font-weight:600;font-size:.85rem}
+.order:hover{background:var(--gold);color:#111}
+
+.about{background:#0e0e0c;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.about-copy h2{text-align:left}
+.about-copy p{color:var(--muted);margin-bottom:18px}
+.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:25px}
+.feature{border:1px solid var(--line);border-radius:14px;padding:16px;background:rgba(255,255,255,.02)}
+.feature b{color:var(--gold);display:block;margin-bottom:3px;font-size:.88rem}
+.feature span{color:var(--muted);font-size:.74rem}
+.about-mark{min-height:430px;border:1px solid var(--line);border-radius:24px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(225,189,85,.1),transparent 60%)}
+.about-mark img{width:75%;max-width:390px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6))}
+
+.contact{padding:80px 0;background:#070707}
+.contact-box{border:1px solid var(--line);border-radius:24px;padding:38px;background:linear-gradient(120deg,#151510,#0c0c0a);display:grid;grid-template-columns:1.2fr .8fr;gap:35px}
+.contact-box h2{font-family:Cinzel,serif;color:var(--gold);font-size:2rem}
+.contact-box p{color:var(--muted);margin:9px 0}
+.contact-list{display:grid;gap:10px}
+.contact-list a,.contact-list div{border-bottom:1px solid rgba(255,255,255,.06);padding:8px 0;color:#ddd;font-size:.88rem}
+.contact-list a:hover{color:var(--gold)}
+.fssai{display:inline-block;margin-top:12px;padding:7px 10px;border:1px solid var(--line);border-radius:7px;color:var(--gold2);font-size:.75rem}
+
+footer{background:#030303;border-top:1px solid rgba(255,255,255,.06);padding:26px 0;color:#777;font-size:.75rem}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.float-actions{position:fixed;right:20px;bottom:20px;z-index:1001;display:flex;flex-direction:column;gap:10px}
+.float-actions a{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#111;border:1px solid var(--line);font-size:21px;box-shadow:0 10px 25px rgba(0,0,0,.45)}
+.float-actions a:hover{transform:scale(1.06);border-color:var(--gold)}
+
+@media(max-width:900px){
+ .hero-grid,.about-grid,.contact-box{grid-template-columns:1fr}
+ .hero{min-height:auto;padding:85px 0}
+ .hero-logo{order:-1}
+ .hero-logo img{width:250px}
+ .product-grid{grid-template-columns:repeat(2,1fr)}
+ .about-mark{min-height:330px}
+}
+@media(max-width:650px){
+ .nav-inner{height:68px}
+ .logo strong{font-size:.92rem}
+ .nav-links{display:none}
+ .menu{display:block}
+ .stats-grid{grid-template-columns:repeat(2,1fr)}
+ .stat:nth-child(2){border-right:0}
+ .stat{border-bottom:1px solid var(--line)}
+ .product-grid{grid-template-columns:1fr}
+ .product-image{height:330px}
+ .feature-list{grid-template-columns:1fr}
+ .section{padding:65px 0}
+ .contact-box{padding:25px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+ <div class="container nav-inner">
+  <a class="logo" href="#">
+   <img src="assets/logo.jpg" alt="Zebulli Wellness">
+   <strong>ZÉBULLI WELLNESS</strong>
+  </a>
+  <div class="nav-links">
+   <a href="#products">Products</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </div>
+  <button class="menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-show')">☰</button>
+ </div>
+</nav>
+
+<style>
+@media(max-width:650px){.nav-links.mobile-show{display:flex;position:absolute;top:68px;left:0;right:0;padding:18px 5%;background:#080808;border-bottom:1px solid var(--line);flex-direction:column;gap:15px}}
+</style>
+
+<section class="hero">
+ <div class="hero-grid">
+  <div>
+   <span class="eyebrow">Premium Wellness • Trusted Care</span>
+   <h1>ZÉBULLI</h1>
+   <h2>Your Partner in Healthy Living</h2>
+   <p>Premium nutraceutical and herbal wellness products thoughtfully created for joint support, bone health, digestion and everyday vitality.</p>
+   <div class="hero-buttons">
+    <a class="btn btn-gold" href="#products">Explore Products →</a>
+    <a class="btn btn-outline" href="https://wa.me/918140363150?text=Hello%20Zebulli%20Wellness%2C%20I%20want%20to%20know%20more%20about%20your%20products." target="_blank">WhatsApp Us</a>
+   </div>
+  </div>
+  <div class="hero-logo"><img src="assets/logo.jpg" alt="Zebulli Wellness Logo"></div>
+ </div>
+</section>
+
+<section class="stats">
+ <div class="container stats-grid">
+  <div class="stat"><b>5+</b><span>Wellness Products</span></div>
+  <div class="stat"><b>Quality</b><span>Focused Formulations</span></div>
+  <div class="stat"><b>FSSAI</b><span>Licensed Brand</span></div>
+  <div class="stat"><b>Surat</b><span>Head Office, Gujarat</span></div>
+ </div>
+</section>
+
+<section class="section products" id="products">
+ <div class="container">
+  <div class="section-head">
+   <span class="kicker">Our Collection</span>
+   <h2>Wellness, Made Active.</h2>
+   <p>Explore the ZÉBULLI ACTIVE range designed around everyday wellness routines.</p>
+  </div>
+
+  <div class="product-grid">
+
+   <article class="card">
+    <div class="product-image"><img src="assets/active-ortho.png" alt="Active Ortho Plus"></div>
+    <div class="card-body">
+     <span class="badge">Nutraceutical • 60 Tablets</span>
+     <h3>ACTIVE ORTHO +</h3>
+     <p class="formula">Glucosamine Sulphate & Collagen Peptide II</p>
+     <div class="price">₹1,599/-</div>
+     <ul class="benefits">
+      <li>Daily support for healthy bones</li><li>Supports joint comfort & mobility</li><li>Supports flexibility and movement</li>
+     </ul>
+     <div class="dose"><b>Dosage:</b> Twice daily</div>
+     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Ortho%20%2B%20%E2%82%B91%2C599" target="_blank">Order via WhatsApp</a>
+    </div>
+   </article>
+
+   <article class="card">
+    <div class="product-image"><img src="assets/active-flex.png" alt="Active Flex Plus"></div>
+    <div class="card-body">
+     <span class="badge">Nutraceutical • 60 Softgels</span>
+     <h3>ACTIVE FLEX +</h3>
+     <p class="formula">Flaxseed Oil, Omega-3, Linolenic & Oleic Acid</p>
+     <div class="price">₹999/-</div>
+     <ul class="benefits">
+      <li>Supports comfortable joint movement</li><li>Supports heart health</li><li>Supports an active lifestyle</li>
+     </ul>
+     <div class="dose"><b>Dosage:</b> Twice daily</div>
+     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Flex%20%2B%20%E2%82%B9999" target="_blank">Order via WhatsApp</a>
+    </div>
+   </article>
+
+   <article class="card">
+    <div class="product-image"><img src="assets/active-joint.png" alt="Active Joint Plus"></div>
+    <div class="card-body">
+     <span class="badge">Herbal Formula • 60 Capsules</span>
+     <h3>ACTIVE JOINT +</h3>
+     <p class="formula">Ayurvedic Formula for Joint & Muscular Support</p>
+     <div class="price">₹699/-</div>
+     <ul class="benefits">
+      <li>Supports joint comfort</li><li>Supports cartilage & connective tissue</li><li>Supports mobility and ease of movement</li>
+     </ul>
+     <div class="dose"><b>Dosage:</b> Twice daily</div>
+     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Joint%20%2B%20%E2%82%B9699" target="_blank">Order via WhatsApp</a>
+    </div>
+   </article>
+
+   <article class="card">
+    <div class="product-image"><img src="assets/active-cal-d3.png" alt="Active Cal D3"></div>
+    <div class="card-body">
+     <span class="badge">Nutraceutical • 60 Tablets</span>
+     <h3>ACTIVE CAL + D3</h3>
+     <p class="formula">Calcium & Vitamin D3 Complex Active Formula</p>
+     <div class="price">₹499/-</div>
+     <ul class="benefits">
+      <li>Supports strong and healthy bones</li><li>Supports bone mineral health</li><li>Supports teeth and muscles</li>
+     </ul>
+     <div class="dose"><b>Dosage:</b> Twice daily</div>
+     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Cal%20%2B%20D3%20%E2%82%B9499" target="_blank">Order via WhatsApp</a>
+    </div>
+   </article>
+
+   <article class="card">
+    <div class="product-image"><img src="assets/active-digestive.png" alt="Active Digestive Plus"></div>
+    <div class="card-body">
+     <span class="badge">Natural Formula • 100 Grams</span>
+     <h3>ACTIVE DIGESTIVE +</h3>
+     <p class="formula">Kabaz Care Churan</p>
+     <div class="price">₹499/-</div>
+     <ul class="benefits">
+      <li>Supports regular digestion</li><li>Helps with gas and bloating</li><li>Supports everyday gut wellness</li>
+     </ul>
+     <div class="dose"><b>Dosage:</b> 1 teaspoon (3–6 gm) with warm water at bedtime</div>
+     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Digestive%20%2B%20%E2%82%B9499" target="_blank">Order via WhatsApp</a>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
+
+<section class="section about" id="about">
+ <div class="container about-grid">
+  <div class="about-copy">
+   <span class="kicker">About Zebulli</span>
+   <h2>Everyday wellness with a premium touch.</h2>
+   <p>ZÉBULLI WELLNESS is focused on creating convenient wellness products that fit naturally into modern daily routines.</p>
+   <p>Our range brings together nutraceutical and herbal formulations across joint, bone and digestive wellness categories.</p>
+   <div class="feature-list">
+    <div class="feature"><b>Quality Focus</b><span>Carefully selected ingredients and consistent product standards.</span></div>
+    <div class="feature"><b>Thoughtful Formulas</b><span>Products developed around practical everyday wellness needs.</span></div>
+    <div class="feature"><b>Reliable Care</b><span>Clear product information and convenient routines.</span></div>
+    <div class="feature"><b>Customer First</b><span>Support before and after your purchase.</span></div>
+   </div>
+  </div>
+  <div class="about-mark"><img src="assets/logo.jpg" alt="Zebulli Wellness"></div>
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <div class="container">
+  <div class="contact-box">
+   <div>
+    <span class="kicker">Get In Touch</span>
+    <h2>Let's talk wellness.</h2>
+    <p>For product information, orders and business enquiries, contact ZÉBULLI WELLNESS.</p>
+    <span class="fssai">FSSAI Lic. No.: 20725031005866</span>
+   </div>
+   <div class="contact-list">
+    <div>📍 10, Gajanand Complex, Nana Varachha Dhal, Varachha Main Road, Surat - 395013</div>
+    <a href="tel:+918140363150">📞 +91 8140363150</a>
+    <a href="tel:+918866257788">📞 +91 8866257788</a>
+    <a href="mailto:zebulliwellness@gmail.com">✉️ zebulliwellness@gmail.com</a>
+    <a href="mailto:info@zebulli.com">✉️ info@zebulli.com</a>
+    <a href="https://instagram.com/zebulli_wellness_fssat" target="_blank">📷 Instagram: @zebulli_wellness_fssat</a>
+    <a href="https://facebook.com/zebulliwellness" target="_blank">📘 Facebook: @zebulliwellness</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<footer>
+ <div class="container footer-inner">
+  <span>© 2026 ZÉBULLI WELLNESS. All Rights Reserved.</span>
+  <span>Your Partner in Healthy Living</span>
+ </div>
+</footer>
+
+<div class="float-actions">
+ <a href="https://wa.me/918140363150?text=Hello%20Zebulli%20Wellness%2C%20I%20want%20to%20know%20more." target="_blank" aria-label="WhatsApp">💬</a>
+ <a href="tel:+918140363150" aria-label="Call">📞</a>
+</div>
+</body>
+</html>
