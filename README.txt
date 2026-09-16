@@ -1,14 +1,14 @@
 ZEBULLI WELLNESS WEBSITE
 =========================
+index.html
 
-Files:
-- index.html
-- assets/logo.jpg
-- assets/active-ortho.png
-- assets/active-flex.png
-- assets/active-joint.png
-- assets/active-cal-d3.png
-- assets/active-digestive.png
+    assets
+        logo.jpg
+        active-ortho.png
+        active-flex.png
+        active-joint.png
+        active-cal-d3.png
+        active-digestive.png
 
 The website is self-contained and uses relative image paths, so the product
 images will work on GitHub Pages as long as the folder structure is preserved.
