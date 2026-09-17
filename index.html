@@ -22,7 +22,6 @@ a{text-decoration:none;color:inherit}
 nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:12px}
-.logo img{width:50px;height:50px;object-fit:cover;border-radius:8px}
 .logo strong{font-family:Cinzel,serif;color:var(--gold);font-size:1.15rem;letter-spacing:2px}
 .nav-links{display:flex;gap:30px;color:#ddd;font-size:.92rem}
 .nav-links a:hover{color:var(--gold)}
@@ -30,9 +29,9 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
 
 .hero{position:relative;overflow:hidden;min-height:700px;display:flex;align-items:center}
 .hero:before{content:"";position:absolute;inset:0;background:
- radial-gradient(circle at 50% 35%,rgba(225,189,85,.15),transparent 34%),
- radial-gradient(circle at 10% 90%,rgba(225,189,85,.08),transparent 25%),
- linear-gradient(120deg,#070707,#10100d 55%,#070707)}
+  radial-gradient(circle at 50% 35%,rgba(225,189,85,.15),transparent 34%),
+  radial-gradient(circle at 10% 90%,rgba(225,189,85,.08),transparent 25%),
+  linear-gradient(120deg,#070707,#10100d 55%,#070707)}
 .hero:after{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(225,189,85,.13);border-radius:50%;right:-180px;top:-130px;box-shadow:0 0 0 45px rgba(225,189,85,.025),0 0 0 90px rgba(225,189,85,.02)}
 .hero-grid{position:relative;z-index:2;width:min(1180px,92%);margin:auto;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--gold2);font-size:.78rem;letter-spacing:2.5px;text-transform:uppercase;border:1px solid var(--line);padding:8px 13px;border-radius:30px;background:rgba(225,189,85,.05)}
@@ -216,13 +215,13 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
 .pay-card{
   background:#121210;
   border:1px solid rgba(225,189,85,.2);
-  padding:10px 18px;
+  padding:8px 18px;
   border-radius:12px;
   font-size:.88rem;
   font-weight:600;
   display:inline-flex;
   align-items:center;
-  gap:9px;
+  gap:10px;
   box-shadow:0 4px 12px rgba(0,0,0,.3);
   transition:.25s;
   cursor:pointer;
@@ -234,7 +233,19 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
   background:#181814;
   box-shadow:0 6px 18px rgba(225,189,85,.2);
 }
-.pay-cod{color:var(--gold2);border-color:rgba(225,189,85,.45);background:rgba(225,189,85,.05);cursor:default}
+.pay-icon-img{
+  height:24px;
+  width:auto;
+  max-width:55px;
+  object-fit:contain;
+  border-radius:4px;
+}
+.pay-cod{
+  color:var(--gold2);
+  border-color:rgba(225,189,85,.45);
+  background:rgba(225,189,85,.05);
+  cursor:default;
+}
 .pay-cod:hover{transform:none}
 
 /* Payment Popup Modal Styling */
@@ -353,7 +364,8 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
   .review-card{width:280px;padding:20px}
   .shipping-badge{font-size:.74rem;padding:8px 14px;letter-spacing:1.2px}
   .payment-badges{gap:10px}
-  .pay-card{font-size:.78rem;padding:8px 14px}
+  .pay-card{font-size:.78rem;padding:7px 12px}
+  .pay-icon-img{height:20px}
   .footer-inner{flex-direction:column;gap:10px;text-align:center !important}
   .footer-inner div{text-align:center !important;padding-right:0 !important}
 }
@@ -501,68 +513,6 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
  <div class="reviews-slider-wrapper" id="reviewsSlider">
   <div class="reviews-track" id="reviewsTrack">
 
-   <!-- Set 1 -->
-   <div class="review-card">
-    <div class="stars">★★★★☆</div>
-    <p>"Active Ortho + has really helped with my knee stiffness during morning walks. The formulation feels clean and very effective."</p>
-    <div class="reviewer">
-     <div class="reviewer-avatar">R</div>
-     <div class="reviewer-info">
-      <b>Rajesh Patel</b>
-      <span>Verified Buyer • Ahmedabad</span>
-     </div>
-    </div>
-   </div>
-
-   <div class="review-card">
-    <div class="stars">★★★★★</div>
-    <p>"હું તો અલગ અલગ જગ્યાએ થી દવાઓ લઇ ને થાકી ગઈ હતી. પછી એક દિવસ ફેસબુક માં જાહેરાત જોય અને આ પ્રોડક્ટ મંગાવી, હવે તો મારે બીજી કોઈ દવાની જરૂર નથી. તમારો આભાર "</p>
-    <div class="reviewer">
-     <div class="reviewer-avatar">P</div>
-     <div class="reviewer-info">
-      <b>Pallavi</b>
-      <span>Verified Buyer • Ahmedabad</span>
-     </div>
-    </div>
-   </div>
-
-   <div class="review-card">
-    <div class="stars">★★★★☆</div>
-    <p>"Using Active Flex + for over a month now. Quality packaging and genuine herbal ingredients. Definitely sticking with this brand!"</p>
-    <div class="reviewer">
-     <div class="reviewer-avatar">P</div>
-     <div class="reviewer-info">
-      <b>Priyanka Patil</b>
-      <span>Verified Buyer • Surat</span>
-     </div>
-    </div>
-   </div>
-
-   <div class="review-card">
-    <div class="stars">★★★★★</div>
-    <p>"મને ઝેબુલી વેલનેસની આ ચારેય દવાઓથી ખુબ જ ફાયદો થયો છે. !"</p>
-    <div class="reviewer">
-     <div class="reviewer-avatar">J</div>
-     <div class="reviewer-info">
-      <b>Jayeshbhai Patel</b>
-      <span>Verified Buyer • Ahmedabad</span>
-     </div>
-    </div>
-   </div>
-
-   <div class="review-card">
-    <div class="stars">★★★★★</div>
-    <p>"Active Digestive + solved my everyday bloating issues. Gentle on the stomach and totally natural. Highly recommended!"</p>
-    <div class="reviewer">
-     <div class="reviewer-avatar">M</div>
-     <div class="reviewer-info">
-      <b>Manish Shah</b>
-      <span>Verified Buyer • Vadodara</span>
-     </div>
-    </div>
-   </div>
-
-   <!-- Set 2 (Infinite Loop duplicate) -->
    <div class="review-card">
     <div class="stars">★★★★☆</div>
     <p>"Active Ortho + has really helped with my knee stiffness during morning walks. The formulation feels clean and very effective."</p>
@@ -707,7 +657,6 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
  </div>
 </section>
 
-<!-- Final Contact Details Section -->
 <section style="padding: 40px 20px;">
   <div class="container">
     <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 30px;">
@@ -778,46 +727,33 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
   <div class="payment-title">100% Secure Payments • Click to Pay via UPI</div>
   
   <div class="payment-badges">
+    <!-- Google Pay Button -->
     <div class="pay-card" onclick="openPayModal('Google Pay')">
-      <svg width="20" height="20" viewBox="0 0 24 24" style="flex-shrink:0;">
-        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
-        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
-        <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.14-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
-        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-      </svg>
+      <img src="Google-Pay-Logo.png" alt="Google Pay" class="pay-icon-img" style="max-height: 22px;">
       <span style="color:#ffffff; font-weight:600;">Google Pay</span>
     </div>
 
-    <!-- Correct Official PhonePe Icon -->
+    <!-- PhonePe Button -->
     <div class="pay-card" onclick="openPayModal('PhonePe')">
-      <svg width="22" height="22" viewBox="0 0 40 40" fill="none" style="flex-shrink:0;">
-        <rect width="40" height="40" rx="8" fill="#5f259f"/>
-        <path d="M29.5 22.8c-1.4-1.4-3.3-2.2-5.4-2.2H23v-7.2c0-1-.8-1.8-1.8-1.8h-4.8c-.5 0-.9.4-.9.9v1.9c0 .5.4.9.9.9h2.3v13.9H16c-.5 0-.9.4-.9.9v1.9c0 .5.4.9.9.9h7.1c2.1 0 4-.8 5.4-2.2 1.4-1.4 2.2-3.3 2.2-5.4s-.8-4.2-2.2-5.6zm-5.4 6.8c-.8 0-1.6-.3-2.2-.9-.6-.6-.9-1.4-.9-2.2v-3.7h3.1c.8 0 1.6.3 2.2.9.6.6.9 1.4.9 2.2 0 2.1-1.6 3.7-3.1 3.7z" fill="#ffffff"/>
-      </svg>
+      <img src="phonepe.jpg" alt="PhonePe" class="pay-icon-img" style="border-radius: 50%; width: 24px; height: 24px; object-fit: cover;">
       <span style="color:#ffffff; font-weight:600;">PhonePe</span>
     </div>
 
-    <!-- Correct Official Paytm Badge Icon -->
+    <!-- Paytm Button -->
     <div class="pay-card" onclick="openPayModal('Paytm')">
-      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" style="flex-shrink:0;">
-        <rect width="32" height="32" rx="6" fill="#002970"/>
-        <path d="M7 11h4.2c2 0 3.3 1.1 3.3 2.8 0 1.8-1.3 2.9-3.3 2.9H9.3v4.3H7V11zm2.3 4h1.7c.8 0 1.3-.4 1.3-1.1 0-.7-.5-1.1-1.3-1.1H9.3v2.2z" fill="#ffffff"/>
-        <path d="M19 14.5c-.8 0-1.5.3-1.9.9v-.8h-2.1v6.4h2.2v-3.3c0-.8.5-1.3 1.2-1.3.7 0 1.1.4 1.1 1.2v3.4h2.2v-3.8c0-1.6-.9-2.7-2.7-2.7z" fill="#00BAF2"/>
-      </svg>
-      <span style="color:#ffffff; font-weight:600;"><span style="color:#ffffff;">Pay</span><span style="color:#00BAF2;">tm</span></span>
+      <img src="Paytm-logo.png" alt="Paytm" class="pay-icon-img" style="background:#fff; padding:2px 4px;">
+      <span style="color:#ffffff; font-weight:600;">Paytm</span>
     </div>
 
+    <!-- BHIM UPI Button -->
     <div class="pay-card" onclick="openPayModal('BHIM UPI')">
-      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" style="flex-shrink:0;">
-        <circle cx="16" cy="16" r="16" fill="#1C3F73"/>
-        <path d="M12 7L18.5 16L12 25H16.5L23 16L16.5 7H12Z" fill="#F47920"/>
-        <path d="M9 16L13.5 22.5H18L13.5 16L18 9.5H13.5L9 16Z" fill="#00A859"/>
-      </svg>
-      <span style="color:#ffffff; font-weight:600;"><span style="color:#F47920;">BHIM</span> UPI</span>
+      <img src="bharat-interface-for-money-bhim-logo-vector.png" alt="BHIM UPI" class="pay-icon-img" style="background:#fff; padding:2px 4px;">
+      <span style="color:#ffffff; font-weight:600;">BHIM UPI</span>
     </div>
 
+    <!-- Cash On Delivery Button -->
     <div class="pay-card pay-cod">
-      <span style="font-size:1.15rem;">💵</span>
+      <img src="pngtree-red-badge-cod-cash-on-delivery-png-image_7900047.png" alt="Cash on Delivery" class="pay-icon-img" style="height: 26px;">
       <span style="color:var(--gold2); font-weight:600;">Cash On Delivery (COD)</span>
     </div>
   </div>
