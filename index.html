@@ -47,9 +47,28 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
 .btn-gold:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(225,189,85,.28)}
 .btn-outline{border:1px solid var(--line);color:var(--gold2);background:rgba(255,255,255,.02)}
 .btn-outline:hover{border-color:var(--gold);background:rgba(225,189,85,.08)}
-.hero-logo{display:flex;justify-content:center}
-.hero-logo img{width:min(420px,78vw);filter:drop-shadow(0 18px 45px rgba(225,189,85,.16));animation:float 5s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-9px)}}
+
+/* Hero Image Showcase */
+.hero-banner-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.hero-banner-image img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(225, 189, 85, 0.25);
+  transition: transform 0.4s ease;
+}
+.hero-banner-image img:hover {
+  transform: translateY(-5px);
+  border-color: rgba(225, 189, 85, 0.5);
+}
 
 .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0d0d0b}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
@@ -348,7 +367,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
  .hero-grid,.about-grid,.contact-box{grid-template-columns:1fr}
  .hero{min-height:auto;padding:85px 0}
  .hero-logo{order:-1}
- .hero-logo img{width:250px}
+ .hero-banner-image img{max-width:380px}
  .product-grid{grid-template-columns:repeat(2,1fr)}
  .about-mark{min-height:330px}
 }
@@ -399,7 +418,14 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
     <a class="btn btn-outline" href="https://wa.me/918140363150?text=Hello%20Zebulli%20Wellness%2C%20I%20want%20to%20know%20more%20about%20your%20products." target="_blank">WhatsApp Us</a>
    </div>
   </div>
-  <div class="hero-logo"><img src="assets/Zebulli Logo.png" alt="Zebulli Wellness Logo"></div>
+  
+  <!-- Right Side: Complete Range Showcase Banner Image -->
+  <div class="hero-logo">
+    <div class="hero-banner-image">
+      <img src="assets/web.png" alt="Zebulli Wellness Complete Range Showcase">
+    </div>
+  </div>
+
  </div>
 </section>
 
@@ -592,7 +618,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
 
    <div class="review-card">
     <div class="stars">★★★★★</div>
-    <p>"હું તો અલગ અલગ જગ્યાએ થી દવાઓ લઇ ને થાકી ગઈ હતી. પછી એક દિવસ ફેસબુક માં જાહેરાત જોય અને આ પ્રોડક્ટ મંગાવી, હવે તો મારે બીજી કોઈ દવાની જરૂર નથી. તમારો આભાર "</p>
+    <p>"હું તો અલગ અલગ જગ્યાએ થી દવાઓ લઇ ને થાકી ગઈ હતી. પછી એક દિવસ ફેસબુક માં જાહેરાત જોઈ અને આ પ્રોડક્ટ મંગાવી, હવે તો મારે બીજી કોઈ દવાની જરૂર નથી. તમારો આભાર "</p>
     <div class="reviewer">
      <div class="reviewer-avatar">P</div>
      <div class="reviewer-info">
@@ -953,4 +979,3 @@ function closePayModal(e, force = false) {
 
 </body>
 </html>
-
