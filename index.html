@@ -100,10 +100,40 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
 .contact-list a:hover{color:var(--gold)}
 .fssai{display:inline-block;margin-top:12px;padding:7px 10px;border:1px solid var(--line);border-radius:7px;color:var(--gold2);font-size:.75rem}
 
-/* Reviews Section Styling */
-.reviews{background:linear-gradient(180deg,#0c0c0a,#070707);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.review-card{background:linear-gradient(145deg,#151512,#0e0e0c);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow);transition:.3s}
+/* Reviews Infinite Slider Styling */
+.reviews{background:linear-gradient(180deg,#0c0c0a,#070707);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.reviews-slider-wrapper{
+  overflow-x:auto;
+  width:100%;
+  display:flex;
+  padding:20px 0 35px;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.reviews-slider-wrapper::-webkit-scrollbar{display:none}
+.reviews-track{
+  display:flex;
+  gap:24px;
+  width:max-content;
+  animation:scrollReviews 30s linear infinite;
+}
+.reviews-slider-wrapper:hover .reviews-track{
+  animation-play-state:paused;
+}
+.review-card{
+  width:320px;
+  flex-shrink:0;
+  background:linear-gradient(145deg,#151512,#0e0e0c);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:26px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow:var(--shadow);
+  transition:.3s;
+}
 .review-card:hover{transform:translateY(-5px);border-color:rgba(225,189,85,.6)}
 .stars{color:var(--gold);font-size:1.1rem;margin-bottom:12px;letter-spacing:2px}
 .review-card p{color:var(--muted);font-size:.92rem;line-height:1.6;margin-bottom:18px;font-style:italic}
@@ -112,6 +142,11 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
 .reviewer-info b{display:block;color:#fff;font-size:.95rem}
 .reviewer-info span{color:var(--muted);font-size:.78rem}
 
+@keyframes scrollReviews{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(calc(-50% - 12px))}
+}
+
 @media(max-width:900px){
  .hero-grid,.about-grid,.contact-box{grid-template-columns:1fr}
  .hero{min-height:auto;padding:85px 0}
@@ -119,7 +154,6 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
  .hero-logo img{width:250px}
  .product-grid{grid-template-columns:repeat(2,1fr)}
  .about-mark{min-height:330px}
- .review-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:650px){
  .nav-inner{height:68px}
@@ -135,7 +169,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
  .section{padding:65px 0}
  .contact-box{padding:25px}
  .nav-links.mobile-show{display:flex;position:absolute;top:68px;left:0;right:0;padding:18px 5%;background:#080808;border-bottom:1px solid var(--line);flex-direction:column;gap:15px}
- .review-grid{grid-template-columns:1fr}
+ .review-card{width:280px;padding:20px}
 }
 </style>
 </head>
@@ -276,11 +310,14 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
    <h2>What Our Clients Say</h2>
    <p>Hear how ZÉBULLI WELLNESS products are making a positive difference in daily routines.</p>
   </div>
+ </div>
 
-  <div class="review-grid">
+ <div class="reviews-slider-wrapper">
+  <div class="reviews-track">
 
+   <!-- Set 1 -->
    <div class="review-card">
-    <div class="stars">★★★★</div>
+    <div class="stars">★★★★☆</div>
     <p>"Active Ortho + has really helped with my knee stiffness during morning walks. The formulation feels clean and very effective."</p>
     <div class="reviewer">
      <div class="reviewer-avatar">R</div>
@@ -291,21 +328,20 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
     </div>
    </div>
 
-     <div class="review-card">
+   <div class="review-card">
     <div class="stars">★★★★★</div>
     <p>"હું તો અલગ અલગ જગ્યાએ થી દવાઓ લઇ ને થાકી ગઈ હતી. પછી એક દિવસ ફેસબુક માં જાહેરાત જોય અને આ પ્રોડક્ટ મંગાવી, હવે તો મારે બીજી કોઈ દવાની જરૂર નથી. તમારો આભાર "</p>
     <div class="reviewer">
      <div class="reviewer-avatar">P</div>
      <div class="reviewer-info">
-      <b>Pallavi </b>
-      <span>Verified Buyer • Ahamedabad</span>
+      <b>Pallavi</b>
+      <span>Verified Buyer • Ahmedabad</span>
      </div>
     </div>
    </div>
 
-    
    <div class="review-card">
-    <div class="stars">★★★★</div>
+    <div class="stars">★★★★☆</div>
     <p>"Using Active Flex + for over a month now. Quality packaging and genuine herbal ingredients. Definitely sticking with this brand!"</p>
     <div class="reviewer">
      <div class="reviewer-avatar">P</div>
@@ -316,19 +352,79 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
     </div>
    </div>
 
-      <div class="review-card">
+   <div class="review-card">
     <div class="stars">★★★★★</div>
     <p>"મને ઝેબુલી વેલનેસની આ ચારેય દવાઓથી ખુબ જ ફાયદો થયો છે. !"</p>
     <div class="reviewer">
-     <div class="reviewer-avatar">P</div>
+     <div class="reviewer-avatar">J</div>
      <div class="reviewer-info">
       <b>Jayeshbhai Patel</b>
-      <span>Verified Buyer • Ahamedabad</span>
+      <span>Verified Buyer • Ahmedabad</span>
      </div>
     </div>
    </div>
- 
-    
+
+   <div class="review-card">
+    <div class="stars">★★★★★</div>
+    <p>"Active Digestive + solved my everyday bloating issues. Gentle on the stomach and totally natural. Highly recommended!"</p>
+    <div class="reviewer">
+     <div class="reviewer-avatar">M</div>
+     <div class="reviewer-info">
+      <b>Manish Shah</b>
+      <span>Verified Buyer • Vadodara</span>
+     </div>
+    </div>
+   </div>
+
+   <!-- Set 2 (Smooth Infinite Loop) -->
+   <div class="review-card">
+    <div class="stars">★★★★☆</div>
+    <p>"Active Ortho + has really helped with my knee stiffness during morning walks. The formulation feels clean and very effective."</p>
+    <div class="reviewer">
+     <div class="reviewer-avatar">R</div>
+     <div class="reviewer-info">
+      <b>Rajesh Patel</b>
+      <span>Verified Buyer • Ahmedabad</span>
+     </div>
+    </div>
+   </div>
+
+   <div class="review-card">
+    <div class="stars">★★★★★</div>
+    <p>"હું તો અલગ અલગ જગ્યાએ થી દવાઓ લઇ ને થાકી ગઈ હતી. પછી એક દિવસ ફેસબુક માં જાહેરાત જોય અને આ પ્રોડક્ટ મંગાવી, હવે તો મારે બીજી કોઈ દવાની જરૂર નથી. તમારો આભાર "</p>
+    <div class="reviewer">
+     <div class="reviewer-avatar">P</div>
+     <div class="reviewer-info">
+      <b>Pallavi</b>
+      <span>Verified Buyer • Ahmedabad</span>
+     </div>
+    </div>
+   </div>
+
+   <div class="review-card">
+    <div class="stars">★★★★☆</div>
+    <p>"Using Active Flex + for over a month now. Quality packaging and genuine herbal ingredients. Definitely sticking with this brand!"</p>
+    <div class="reviewer">
+     <div class="reviewer-avatar">P</div>
+     <div class="reviewer-info">
+      <b>Priyanka Patil</b>
+      <span>Verified Buyer • Surat</span>
+     </div>
+    </div>
+   </div>
+
+   <div class="review-card">
+    <div class="stars">★★★★★</div>
+    <p>"મને ઝેબુલી વેલનેસની આ ચારેય દવાઓથી ખુબ જ ફાયદો થયો છે. !"</p>
+    <div class="reviewer">
+     <div class="reviewer-avatar">J</div>
+     <div class="reviewer-info">
+      <b>Jayeshbhai Patel</b>
+      <span>Verified Buyer • Ahmedabad</span>
+     </div>
+    </div>
+   </div>
+
    <div class="review-card">
     <div class="stars">★★★★★</div>
     <p>"Active Digestive + solved my everyday bloating issues. Gentle on the stomach and totally natural. Highly recommended!"</p>
