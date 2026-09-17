@@ -47,72 +47,8 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
 .btn-gold:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(225,189,85,.28)}
 .btn-outline{border:1px solid var(--line);color:var(--gold2);background:rgba(255,255,255,.02)}
 .btn-outline:hover{border-color:var(--gold);background:rgba(225,189,85,.08)}
-
-/* Hero Product Slider CSS */
-.hero-slider-wrap{
-  width:100%;
-  max-width:440px;
-  position:relative;
-  overflow:hidden;
-  border-radius:24px;
-  background:radial-gradient(circle at 50% 50%,rgba(225,189,85,.12),transparent 65%);
-  padding:20px 0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-.hero-slider-track{
-  display:flex;
-  width:100%;
-  transition:transform .7s cubic-bezier(.25,1,.5,1);
-}
-.hero-slide{
-  min-width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  user-select:none;
-}
-.hero-slide img{
-  height:330px;
-  max-width:88%;
-  object-fit:contain;
-  filter:drop-shadow(0 18px 36px rgba(0,0,0,.6));
-  animation:float 5s ease-in-out infinite;
-}
-.hero-slide-badge{
-  margin-top:12px;
-  background:rgba(225,189,85,.12);
-  border:1px solid var(--line);
-  color:var(--gold2);
-  font-size:.82rem;
-  letter-spacing:1.5px;
-  padding:5px 14px;
-  border-radius:20px;
-  font-weight:600;
-  font-family:Cinzel,serif;
-}
-.hero-dots{
-  display:flex;
-  gap:8px;
-  margin-top:14px;
-  align-items:center;
-}
-.hero-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:rgba(255,255,255,.25);
-  cursor:pointer;
-  transition:.3s;
-}
-.hero-dot.active{
-  background:var(--gold);
-  width:24px;
-  border-radius:10px;
-}
+.hero-logo{display:flex;justify-content:center}
+.hero-logo img{width:min(420px,78vw);filter:drop-shadow(0 18px 45px rgba(225,189,85,.16));animation:float 5s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-9px)}}
 
 .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0d0d0b}
@@ -412,8 +348,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
  .hero-grid,.about-grid,.contact-box{grid-template-columns:1fr}
  .hero{min-height:auto;padding:85px 0}
  .hero-logo{order:-1}
- .hero-slider-wrap{max-width:320px;margin:auto}
- .hero-slide img{height:260px}
+ .hero-logo img{width:250px}
  .product-grid{grid-template-columns:repeat(2,1fr)}
  .about-mark{min-height:330px}
 }
@@ -464,50 +399,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
     <a class="btn btn-outline" href="https://wa.me/918140363150?text=Hello%20Zebulli%20Wellness%2C%20I%20want%20to%20know%20more%20about%20your%20products." target="_blank">WhatsApp Us</a>
    </div>
   </div>
-  
-  <!-- Right to Left Sweeping Product Showcase -->
-  <div class="hero-logo">
-    <div class="hero-slider-wrap">
-      <div class="hero-slider-track" id="heroProductTrack">
-        
-        <div class="hero-slide">
-          <img src="assets/active-ortho.png" alt="Active Ortho Plus">
-          <span class="hero-slide-badge">ACTIVE ORTHO +</span>
-        </div>
-
-        <div class="hero-slide">
-          <img src="assets/active-flex.png" alt="Active Flex Plus">
-          <span class="hero-slide-badge">ACTIVE FLEX +</span>
-        </div>
-
-        <div class="hero-slide">
-          <img src="assets/active-joint.png" alt="Active Joint Plus">
-          <span class="hero-slide-badge">ACTIVE JOINT +</span>
-        </div>
-
-        <div class="hero-slide">
-          <img src="assets/active-cal-d3.png" alt="Active Cal D3">
-          <span class="hero-slide-badge">ACTIVE CAL + D3</span>
-        </div>
-
-        <div class="hero-slide">
-          <img src="assets/active-digestive.png" alt="Active Digestive Plus">
-          <span class="hero-slide-badge">ACTIVE DIGESTIVE +</span>
-        </div>
-
-      </div>
-
-      <!-- Slide Indicator Dots -->
-      <div class="hero-dots">
-        <span class="hero-dot active" onclick="gotoHeroSlide(0)"></span>
-        <span class="hero-dot" onclick="gotoHeroSlide(1)"></span>
-        <span class="hero-dot" onclick="gotoHeroSlide(2)"></span>
-        <span class="hero-dot" onclick="gotoHeroSlide(3)"></span>
-        <span class="hero-dot" onclick="gotoHeroSlide(4)"></span>
-      </div>
-    </div>
-  </div>
-
+  <div class="hero-logo"><img src="assets/Zebulli Logo.png" alt="Zebulli Wellness Logo"></div>
  </div>
 </section>
 
@@ -1057,35 +949,8 @@ function closePayModal(e, force = false) {
     document.getElementById('payModal').classList.remove('show');
   }
 }
-
-// Hero Right-to-Left Auto Product Slider Script
-let currentHeroIdx = 0;
-const totalHeroProducts = 5;
-const heroProdTrack = document.getElementById('heroProductTrack');
-const heroDotElements = document.querySelectorAll('.hero-dot');
-
-function updateHeroProductSlider() {
-  if (heroProdTrack) {
-    heroProdTrack.style.transform = `translateX(-${currentHeroIdx * 100}%)`;
-    heroDotElements.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx === currentHeroIdx);
-    });
-  }
-}
-
-function nextHeroProduct() {
-  currentHeroIdx = (currentHeroIdx + 1) % totalHeroProducts;
-  updateHeroProductSlider();
-}
-
-function gotoHeroSlide(idx) {
-  currentHeroIdx = idx;
-  updateHeroProductSlider();
-}
-
-// દર 3 સેકન્ડે આપમેળે સ્લાઇડ બદલાશે
-setInterval(nextHeroProduct, 3000);
 </script>
 
 </body>
 </html>
+
