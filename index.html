@@ -32,6 +32,83 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
 .nav-links a:hover{color:var(--gold)}
 .menu{display:none;border:1px solid var(--line);background:transparent;color:var(--gold);padding:8px 11px;border-radius:8px;font-size:20px}
 
+/* Top Sweep Banner Slider Styling */
+.top-banner-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: #000;
+  user-select: none;
+}
+.banner-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.banner-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 34px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+.banner-content {
+  max-width: 850px;
+  margin: 0 auto;
+}
+.banner-tag {
+  display: inline-block;
+  font-size: 0.74rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+.banner-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.2rem, 2.8vw, 1.85rem);
+  margin: 4px 0 6px;
+  letter-spacing: 1px;
+}
+.banner-desc {
+  font-size: clamp(0.82rem, 1.6vw, 0.95rem);
+  color: #ccc;
+  margin: 0;
+}
+.banner-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+.b-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.b-dot.active {
+  background: var(--gold);
+  width: 24px;
+  border-radius: 10px;
+}
+@media(max-width: 768px) {
+  .banner-slide { padding: 25px 15px 30px; }
+  .banner-title { font-size: 1.15rem; }
+  .banner-desc { font-size: 0.78rem; }
+}
+
 .hero{position:relative;overflow:hidden;min-height:700px;display:flex;align-items:center}
 .hero:before{content:"";position:absolute;inset:0;background:
  radial-gradient(circle at 50% 35%,rgba(225,189,85,.15),transparent 34%),
@@ -426,6 +503,57 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
  </div>
 </nav>
 
+<!-- Top Sliding 4 Coding Banners (Auto-Slide & Touch-Swipe Enabled) -->
+<div class="top-banner-slider" id="topBannerSlider">
+  <div class="banner-track" id="bannerTrack">
+
+    <!-- Slide 1: Brand & Certification -->
+    <div class="banner-slide" style="background: radial-gradient(circle at center, #1b1912 0%, #070707 100%);">
+      <div class="banner-content">
+        <span class="banner-tag" style="background: rgba(225,189,85,0.08); border: 1px solid var(--line); color: var(--gold2);">100% Certified & Premium Care</span>
+        <h3 class="banner-title" style="color: #fff;">Purity • Integrity • Daily Vitality</h3>
+        <p class="banner-desc">Scientifically formulated nutraceuticals meeting FSSAI, GMP & USFDA standards.</p>
+      </div>
+    </div>
+
+    <!-- Slide 2: Joint Care Focus -->
+    <div class="banner-slide" style="background: linear-gradient(135deg, #181711 0%, #080808 100%);">
+      <div class="banner-content">
+        <span class="banner-tag" style="background: rgba(225,189,85,0.18); color: var(--gold2); border: 1px solid rgba(225,189,85,0.35);">ACTIVE ORTHO + & ACTIVE FLEX +</span>
+        <h3 class="banner-title" style="color: #fff;">Restore Joint Mobility & Flexibility</h3>
+        <p class="banner-desc">Glucosamine, Collagen Peptide II & Omega-3 for pain-free everyday movement.</p>
+      </div>
+    </div>
+
+    <!-- Slide 3: WhatsApp Ordering & Worldwide Shipping -->
+    <div class="banner-slide" style="background: radial-gradient(circle at 40% 50%, rgba(225,189,85,0.16), transparent 70%), #070707;">
+      <div class="banner-content">
+        <span class="banner-tag" style="background: rgba(37,211,102,0.12); color: #25D366; border: 1px solid rgba(37,211,102,0.35);">Fast Dispatch & Doorstep Delivery</span>
+        <h3 class="banner-title" style="color: var(--gold2);">Order Directly On WhatsApp</h3>
+        <p class="banner-desc">Pan-India Cash on Delivery (COD) Available • Worldwide Express Shipping.</p>
+      </div>
+    </div>
+
+    <!-- Slide 4: Gut & Digestive Health -->
+    <div class="banner-slide" style="background: linear-gradient(135deg, #0e0e0c 0%, #171612 100%);">
+      <div class="banner-content">
+        <span class="banner-tag" style="background: rgba(225,189,85,0.08); border: 1px solid var(--line); color: var(--gold2);">ACTIVE DIGESTIVE +</span>
+        <h3 class="banner-title" style="color: #fff;">Gentle & Natural Daily Gut Wellness</h3>
+        <p class="banner-desc">Say goodbye to everyday acidity, bloating, and indigestion naturally.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Banner Navigation Dots -->
+  <div class="banner-dots" id="bannerDots">
+    <span class="b-dot active" onclick="goBannerSlide(0)"></span>
+    <span class="b-dot" onclick="goBannerSlide(1)"></span>
+    <span class="b-dot" onclick="goBannerSlide(2)"></span>
+    <span class="b-dot" onclick="goBannerSlide(3)"></span>
+  </div>
+</div>
+
 <section class="hero">
  <div class="hero-grid">
   <div>
@@ -764,7 +892,6 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
               <span style="color: #888; font-size: 0.74rem; letter-spacing: 1px;">Founder & Director</span>
         </div>
 
-
         <!-- Darshita Rakholiya Photo -->
         <div style="text-align: center;">
           <img src="assets/milan.png" alt="Darshita Rakholiya - Managing Director (M.D)" 
@@ -786,7 +913,6 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
 
         <div style="color: rgba(225,189,85,0.6); font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 1.5px; margin-left: auto; text-align: right;">
           PURITY • INTEGRITY • HEALTH
-        </div>
         </div>
       </div>
 
@@ -1013,6 +1139,62 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,7,7,.9);backdrop-filter
 </footer>
 
 <script>
+// Top Banner Auto Slider & Touch Swipe Control
+let bannerIndex = 0;
+const bannerTrack = document.getElementById('bannerTrack');
+const bannerSlides = document.querySelectorAll('.banner-slide');
+const bannerDots = document.querySelectorAll('.b-dot');
+let bannerTimer;
+
+function updateBanner() {
+  if (!bannerTrack) return;
+  bannerTrack.style.transform = `translateX(-${bannerIndex * 100}%)`;
+  bannerDots.forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === bannerIndex);
+  });
+}
+
+function goBannerSlide(index) {
+  bannerIndex = index;
+  updateBanner();
+  resetBannerTimer();
+}
+
+function nextBannerSlide() {
+  bannerIndex = (bannerIndex + 1) % bannerSlides.length;
+  updateBanner();
+}
+
+function resetBannerTimer() {
+  clearInterval(bannerTimer);
+  bannerTimer = setInterval(nextBannerSlide, 4500);
+}
+
+// Mobile Touch Sweep Logic
+let startX = 0;
+const topSliderEl = document.getElementById('topBannerSlider');
+
+if (topSliderEl) {
+  topSliderEl.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+
+  topSliderEl.addEventListener('touchend', (e) => {
+    let endX = e.changedTouches[0].clientX;
+    if (startX - endX > 45) {
+      bannerIndex = (bannerIndex + 1) % bannerSlides.length;
+      updateBanner();
+      resetBannerTimer();
+    } else if (endX - startX > 45) {
+      bannerIndex = (bannerIndex - 1 + bannerSlides.length) % bannerSlides.length;
+      updateBanner();
+      resetBannerTimer();
+    }
+  }, { passive: true });
+}
+
+resetBannerTimer();
+
 // Reviews Slider Animation
 function slideReviews(direction) {
   const slider = document.getElementById('reviewsSlider');
