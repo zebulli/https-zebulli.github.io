@@ -189,7 +189,54 @@ nav{
 .badge{display:inline-block;width:max-content;color:var(--gold2);font-size:.68rem;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--line);background:rgba(225,189,85,.07);padding:5px 9px;border-radius:6px}
 .card h3{font-family:Cinzel,serif;font-size:1.35rem;margin:11px 0 5px}
 .formula{font-size:.78rem;color:var(--muted);min-height:38px}
-.price{font-size:1.55rem;color:var(--gold);font-weight:700;margin:10px 0}
+
+/* Price & Discount Display (Fixed 2-Line Layout) */
+.price-box{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:6px;
+  margin:10px 0;
+}
+.price-row{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.price-box .mrp{
+  font-size:1.02rem;
+  color:#888;
+  text-decoration:line-through;
+  font-weight:500;
+}
+.price-box .sale-price{
+  font-size:1.55rem;
+  color:var(--gold);
+  font-weight:700;
+}
+.price-box .discount-tag{
+  font-size:0.7rem;
+  color:#25D366;
+  background:rgba(37,211,102,0.1);
+  border:1px solid rgba(37,211,102,0.3);
+  padding:2px 7px;
+  border-radius:12px;
+  font-weight:600;
+}
+.price-box .free-shipping-tag{
+  font-size:0.68rem;
+  color:#f7df8b;
+  background:rgba(225,189,85,0.12);
+  border:1px solid rgba(225,189,85,0.3);
+  padding:2px 8px;
+  border-radius:12px;
+  font-weight:600;
+  letter-spacing:0.5px;
+  width:fit-content;
+  display:inline-block;
+}
+
 .benefits{list-style:none;margin:2px 0 18px;color:#d7d5cf;font-size:.82rem}
 .benefits li{margin:6px 0;padding-left:19px;position:relative}
 .benefits li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
@@ -246,6 +293,65 @@ nav{
   letter-spacing: 0.5px;
   display: block;
   line-height: 1.35;
+}
+
+/* FAQ Accordion Section Styling */
+.faq-section{
+  padding:80px 0;
+  background:#090908;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.faq-container{
+  max-width:820px;
+  margin:0 auto;
+}
+.faq-item{
+  background:linear-gradient(145deg,#131310,#0e0e0c);
+  border:1px solid rgba(225,189,85,0.22);
+  border-radius:14px;
+  margin-bottom:14px;
+  overflow:hidden;
+  transition:all 0.3s ease;
+}
+.faq-item:hover{
+  border-color:rgba(225,189,85,0.5);
+}
+.faq-question{
+  padding:20px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  user-select:none;
+}
+.faq-question h4{
+  font-size:0.98rem;
+  font-weight:600;
+  color:#fff;
+  margin:0;
+}
+.faq-icon{
+  font-size:1.3rem;
+  color:var(--gold);
+  transition:transform 0.3s ease;
+  line-height:1;
+}
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.35s ease, padding 0.35s ease;
+  padding:0 24px;
+  color:var(--muted);
+  font-size:0.88rem;
+  line-height:1.65;
+}
+.faq-item.active .faq-answer{
+  max-height:160px;
+  padding:0 24px 20px;
+}
+.faq-item.active .faq-icon{
+  transform:rotate(45deg);
 }
 
 .contact{padding:80px 0;background:#070707}
@@ -615,8 +721,15 @@ nav{
   .card-body{padding:18px}
   .card h3{font-size:1.15rem !important;margin:8px 0 4px !important}
   .formula{font-size:0.74rem !important;min-height:auto !important;margin-bottom:6px !important}
-  .price{font-size:1.3rem !important;margin:6px 0 !important}
+  .price-box .sale-price{font-size:1.4rem !important}
+  .price-box .mrp{font-size:0.95rem !important}
   .benefits li{font-size:0.78rem !important;margin:4px 0 !important}
+
+  .faq-section{padding:50px 0 !important;}
+  .faq-question{padding:16px 18px !important;}
+  .faq-question h4{font-size:0.88rem !important;}
+  .faq-answer{font-size:0.80rem !important;}
+  .faq-item.active .faq-answer{padding:0 18px 16px !important;}
 
   .slide-btn{
     width:38px;
@@ -698,16 +811,16 @@ nav{
    <img src="assets/Zebulli Logo.png" alt="Zebulli Wellness" style="height: 44px; width: auto; max-width: 180px; object-fit: contain; border-radius: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));">
   </a>
   <div class="nav-links">
-   <a href="#products">Products</a><a href="#reviews">Reviews</a><a href="#about">About</a><a href="#contact">Contact</a>
+   <a href="#products">Products</a><a href="#reviews">Reviews</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
   </div>
   <button class="menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-show')">☰</button>
  </div>
 </nav>
 
-<!-- Top Sliding 6 Luxury Banners -->
+<!-- Top Sliding Luxury Banners (Includes 4-in-1 Combo Pack Banner) -->
 <div class="top-banner-slider" id="topBannerSlider">
   <div class="banner-track" id="bannerTrack">
-    
+
     <!-- Banner 1: Brand Trust & Standards -->
     <div class="banner-slide" style="background: radial-gradient(circle at center, #1b1912 0%, #080807 100%);">
       <div class="banner-content">
@@ -717,7 +830,16 @@ nav{
       </div>
     </div>
 
-    <!-- Banner 2: Joint Support Focus -->
+    <!-- Banner 2: NEW 4-in-1 Complete Care Combo Offer -->
+    <div class="banner-slide" style="background: radial-gradient(circle at center, #261f0b 0%, #0c0b08 100%); border: 1px solid rgba(225,189,85,0.2);">
+      <div class="banner-content">
+        <span class="banner-tag" style="background: linear-gradient(135deg, var(--gold2), var(--gold)); color: #111; font-weight: 800; border: none;">★ MEGA SAVER 30% OFF</span>
+        <h3 class="banner-title" style="color: #f7df8b;">COMPLETE JOINT & BONE CARE COMBO (4-IN-1)</h3>
+        <p class="banner-desc" style="color: #e5e3dc;">Active Ortho+ &bull; Active Flex+ &bull; Active Joint+ &bull; Active Cal+ D3 at just <b style="color:#fff;">₹2,650/-</b> <span style="text-decoration:line-through;color:#888;">(MRP ₹3,796)</span></p>
+      </div>
+    </div>
+
+    <!-- Banner 3: Joint Support Focus -->
     <div class="banner-slide" style="background: linear-gradient(135deg, #15140f 0%, #070706 100%);">
       <div class="banner-content">
         <span class="banner-tag" style="background: rgba(225,189,85,0.18); color: #e1bd55;">ACTIVE ORTHO + & FLEX +</span>
@@ -726,7 +848,7 @@ nav{
       </div>
     </div>
 
-    <!-- Banner 3: Ayurvedic Joint Relief -->
+    <!-- Banner 4: Ayurvedic Joint Relief -->
     <div class="banner-slide" style="background: radial-gradient(circle at 75% 50%, rgba(225,189,85,0.14), transparent 60%), #0b0b09;">
       <div class="banner-content">
         <span class="banner-tag" style="border: 1px solid rgba(225,189,85,0.3); color: #dedede;">AYURVEDIC CARE</span>
@@ -735,7 +857,7 @@ nav{
       </div>
     </div>
 
-    <!-- Banner 4: Bone Strength -->
+    <!-- Banner 5: Bone Strength -->
     <div class="banner-slide" style="background: linear-gradient(120deg, #11110e 0%, #1a1811 50%, #0c0c0a 100%);">
       <div class="banner-content">
         <span class="banner-tag" style="background: rgba(255,255,255,0.06); color: #f7df8b; border: 1px solid rgba(225,189,85,0.2);">ACTIVE CAL + D3</span>
@@ -744,7 +866,7 @@ nav{
       </div>
     </div>
 
-    <!-- Banner 5: Digestion & Gut Health -->
+    <!-- Banner 6: Digestion & Gut Health -->
     <div class="banner-slide" style="background: radial-gradient(circle at 25% 50%, rgba(225,189,85,0.16), transparent 60%), #080807;">
       <div class="banner-content">
         <span class="banner-tag" style="background: rgba(124,179,66,0.12); color: #9ccc65; border: 1px solid rgba(124,179,66,0.3);">NATURAL GUT CARE</span>
@@ -753,7 +875,7 @@ nav{
       </div>
     </div>
 
-    <!-- Banner 6: Direct Order & Delivery -->
+    <!-- Banner 7: Direct Order & Delivery -->
     <div class="banner-slide" style="background: linear-gradient(135deg, #17150f 0%, #070706 100%);">
       <div class="banner-content">
         <span class="banner-tag" style="background: rgba(37,211,102,0.12); color: #25D366; border: 1px solid rgba(37,211,102,0.3);">DIRECT FROM BRAND</span>
@@ -764,7 +886,7 @@ nav{
 
   </div>
 
-  <!-- Navigation Dots -->
+  <!-- Navigation Dots (Updated for all 7 Banners) -->
   <div class="banner-nav" id="bannerDots">
     <span class="banner-dot active" onclick="goBannerSlide(0)"></span>
     <span class="banner-dot" onclick="goBannerSlide(1)"></span>
@@ -772,6 +894,7 @@ nav{
     <span class="banner-dot" onclick="goBannerSlide(3)"></span>
     <span class="banner-dot" onclick="goBannerSlide(4)"></span>
     <span class="banner-dot" onclick="goBannerSlide(5)"></span>
+    <span class="banner-dot" onclick="goBannerSlide(6)"></span>
   </div>
 </div>
 
@@ -820,78 +943,145 @@ nav{
 
   <div class="product-grid">
 
+   <!-- FEATURED 4-IN-1 COMPLETE JOINT & BONE CARE COMBO -->
+   <article class="card" style="border: 2px solid #e1bd55; box-shadow: 0 0 30px rgba(225,189,85,0.28);">
+    <div class="product-image" style="height: 340px; padding: 16px;">
+     <img src="assets/combo.png" alt="Complete 4-in-1 Joint and Bone Care Combo" style="max-height: 100%; max-width: 96%; object-fit: contain;">
+    </div>
+    <div class="card-body">
+     <span class="badge" style="background: rgba(225,189,85,0.2); color: #f7df8b; border-color: #e1bd55; font-weight: 700;">★ MEGA SAVER COMBO (4-IN-1)</span>
+     <h3 style="color: #f7df8b; font-size: 1.3rem; margin: 10px 0 4px;">COMPLETE JOINT & BONE CARE</h3>
+     <p class="formula">Active Ortho+ &bull; Active Flex+ &bull; Active Joint+ &bull; Active Cal+ D3</p>
+     <div class="price-box">
+       <div class="price-row">
+         <span class="mrp">₹3,796</span>
+         <span class="sale-price">₹2,650/-</span>
+         <span class="discount-tag">30% OFF</span>
+       </div>
+       <span class="free-shipping-tag">🚚 FREE DELIVERY</span>
+     </div>
+     <ul class="benefits">
+      <li>Complete 360° support for bones, joints, cartilage & muscles</li>
+      <li>Combines Glucosamine, Collagen, Omega-3, Calcium & Ayurveda</li>
+      <li>Maximum absorption formula for daily mobility & flexibility</li>
+     </ul>
+     <div class="dose"><b>Full Course:</b> Complete Daily Regimen (Twice daily with meals)</div>
+     <a class="order" style="background: linear-gradient(135deg, var(--gold2), var(--gold)); color: #111; font-weight: 700;" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Complete%20Joint%20%26%20Bone%20Care%20Combo%20(4-in-1)%20%E2%82%B92%2C650" target="_blank">Order Combo via WhatsApp</a>
+    </div>
+   </article>
+
+   <!-- Product 1: ACTIVE ORTHO + -->
    <article class="card">
     <div class="product-image"><img src="assets/active-ortho.png" alt="Active Ortho Plus"></div>
     <div class="card-body">
      <span class="badge">Nutraceutical • 60 Tablets</span>
      <h3>ACTIVE ORTHO +</h3>
      <p class="formula">Glucosamine Sulphate & Collagen Peptide II</p>
-     <div class="price">₹1,599/-</div>
+     <div class="price-box">
+       <div class="price-row">
+         <span class="mrp">₹1,599</span>
+         <span class="sale-price">₹1,116/-</span>
+         <span class="discount-tag">30% OFF</span>
+       </div>
+       <span class="free-shipping-tag">🚚 FREE DELIVERY</span>
+     </div>
      <ul class="benefits">
       <li>Daily support for healthy bones</li><li>Supports joint comfort & mobility</li><li>Supports flexibility and movement</li>
      </ul>
      <div class="dose"><b>Dosage:</b> Twice daily</div>
-     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Ortho%20%2B%20%E2%82%B91%2C599" target="_blank">Order via WhatsApp</a>
+     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Ortho%20%2B%20%E2%82%B91%2C116" target="_blank">Order via WhatsApp</a>
     </div>
    </article>
 
+   <!-- Product 2: ACTIVE FLEX + -->
    <article class="card">
     <div class="product-image"><img src="assets/active-flex.png" alt="Active Flex Plus"></div>
     <div class="card-body">
      <span class="badge">Nutraceutical • 60 Softgels</span>
      <h3>ACTIVE FLEX +</h3>
      <p class="formula">Flaxseed Oil, Omega-3, Linolenic & Oleic Acid</p>
-     <div class="price">₹999/-</div>
+     <div class="price-box">
+       <div class="price-row">
+         <span class="mrp">₹999</span>
+         <span class="sale-price">₹697/-</span>
+         <span class="discount-tag">30% OFF</span>
+       </div>
+       <span class="free-shipping-tag">🚚 FREE DELIVERY</span>
+     </div>
      <ul class="benefits">
       <li>Supports comfortable joint movement</li><li>Supports heart health</li><li>Supports an active lifestyle</li>
      </ul>
      <div class="dose"><b>Dosage:</b> Twice daily</div>
-     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Flex%20%2B%20%E2%82%B9999" target="_blank">Order via WhatsApp</a>
+     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Flex%20%2B%20%E2%82%B9697" target="_blank">Order via WhatsApp</a>
     </div>
    </article>
 
+   <!-- Product 3: ACTIVE JOINT + -->
    <article class="card">
     <div class="product-image"><img src="assets/active-joint.png" alt="Active Joint Plus"></div>
     <div class="card-body">
      <span class="badge">Herbal Formula • 60 Capsules</span>
      <h3>ACTIVE JOINT +</h3>
      <p class="formula">Ayurvedic Formula for Joint & Muscular Support</p>
-     <div class="price">₹699/-</div>
+     <div class="price-box">
+       <div class="price-row">
+         <span class="mrp">₹699</span>
+         <span class="sale-price">₹488/-</span>
+         <span class="discount-tag">30% OFF</span>
+       </div>
+       <span class="free-shipping-tag">🚚 FREE DELIVERY</span>
+     </div>
      <ul class="benefits">
       <li>Supports joint comfort</li><li>Supports cartilage & connective tissue</li><li>Supports mobility and ease of movement</li>
      </ul>
      <div class="dose"><b>Dosage:</b> Twice daily</div>
-     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Joint%20%2B%20%E2%82%B9699" target="_blank">Order via WhatsApp</a>
+     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Joint%20%2B%20%E2%82%B9488" target="_blank">Order via WhatsApp</a>
     </div>
    </article>
 
+   <!-- Product 4: ACTIVE CAL + D3 -->
    <article class="card">
     <div class="product-image"><img src="assets/active-cal-d3.png" alt="Active Cal D3"></div>
     <div class="card-body">
      <span class="badge">Nutraceutical • 60 Tablets</span>
      <h3>ACTIVE CAL + D3</h3>
      <p class="formula">Calcium & Vitamin D3 Complex Active Formula</p>
-     <div class="price">₹499/-</div>
+     <div class="price-box">
+       <div class="price-row">
+         <span class="mrp">₹499</span>
+         <span class="sale-price">₹348/-</span>
+         <span class="discount-tag">30% OFF</span>
+       </div>
+       <span class="free-shipping-tag">🚚 FREE DELIVERY</span>
+     </div>
      <ul class="benefits">
       <li>Supports strong and healthy bones</li><li>Supports bone mineral health</li><li>Supports teeth and muscles</li>
      </ul>
      <div class="dose"><b>Dosage:</b> Twice daily</div>
-     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Cal%20%2B%20D3%20%E2%82%B9499" target="_blank">Order via WhatsApp</a>
+     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Cal%20%2B%20D3%20%E2%82%B9348" target="_blank">Order via WhatsApp</a>
     </div>
    </article>
 
+   <!-- Product 5: ACTIVE DIGESTIVE + -->
    <article class="card">
     <div class="product-image"><img src="assets/active-digestive.png" alt="Active Digestive Plus"></div>
     <div class="card-body">
      <span class="badge">Natural Formula • 100 Grams</span>
      <h3>ACTIVE DIGESTIVE +</h3>
      <p class="formula">Kabz Care Churna</p>
-     <div class="price">₹499/-</div>
+     <div class="price-box">
+       <div class="price-row">
+         <span class="mrp">₹499</span>
+         <span class="sale-price">₹348/-</span>
+         <span class="discount-tag">30% OFF</span>
+       </div>
+       <span class="free-shipping-tag">🚚 FREE DELIVERY</span>
+     </div>
      <ul class="benefits">
       <li>Supports regular digestion</li><li>Helps with gas and bloating</li><li>Supports everyday gut wellness</li>
      </ul>
      <div class="dose"><b>Dosage:</b> 1 teaspoon (3–6 gm) with warm water at bedtime</div>
-     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Digestive%20%2B%20%E2%82%B9499" target="_blank">Order via WhatsApp</a>
+     <a class="order" href="https://wa.me/918140363150?text=Hello%2C%20I%20want%20to%20order%20Active%20Digestive%20%2B%20%E2%82%B9348" target="_blank">Order via WhatsApp</a>
     </div>
    </article>
 
@@ -1098,15 +1288,15 @@ nav{
   <div style="background: linear-gradient(135deg, rgba(225,189,85,0.06), rgba(18,18,16,0.92)); border: 1px solid rgba(225, 189, 85, 0.3); border-radius: 24px; padding: 35px 25px; box-shadow: 0 15px 45px rgba(0,0,0,0.55); position: relative; overflow: hidden;">
     <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center; gap: 35px;">
       
-      <!-- Photos of Both Leaders (Aligned in Same Level with 2-Line Text) -->
+      <!-- Photos of Both Leaders (Aligned in Same Level with "Founder &" on Top) -->
       <div class="founders-wrap">
         
         <!-- Milan Rakholiya Photo -->
-		<div class="founder-card">
-		  <img src="assets/milan.png" alt="Milan Rakholiya - Founder & Director">
+        <div class="founder-card">
+          <img src="assets/milan.png" alt="Milan Rakholiya - Founder & Director">
           <b>Milan Rakholiya</b>
           <span>Founder &amp;</span>
-		  <span>Director</span>
+          <span>Director</span>
         </div>
 
         <!-- Darshita Rakholiya Photo -->
@@ -1160,6 +1350,76 @@ nav{
       <span style="color: #cccccc; font-size: 0.95rem; line-height: 1.5; display: block;">Support before and after your purchase.</span>
     </div>
 
+  </div>
+</section>
+
+<!-- Frequently Asked Questions (FAQ) Section -->
+<section class="faq-section" id="faq">
+  <div class="container faq-container">
+    <div class="section-head" style="margin-bottom: 35px;">
+      <span class="kicker">Got Questions?</span>
+      <h2>Frequently Asked Questions</h2>
+      <p>Here are answers to the most common queries about our wellness products.</p>
+    </div>
+
+    <div class="faq-list">
+      
+      <!-- FAQ 1 -->
+      <div class="faq-item active">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h4>Are Zebulli Wellness products safe and certified?</h4>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Yes, 100%. All Zebulli Wellness products are manufactured in USFDA registered, WHO-GMP certified facilities under strict FSSAI food safety guidelines (Lic. No. 20725031005866) using pure and scientifically tested ingredients.
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h4>How long does it take to see noticeable results?</h4>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Nutraceutical and herbal formulations work naturally with your body. While individual responses vary, most customers begin noticing comfortable joint flexibility and daily improvement within 3 to 4 weeks of consistent twice-daily usage.
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h4>Do you charge extra for delivery?</h4>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          No! We offer 100% Free Shipping and Delivery across India on all single products and combo packs. There are no hidden or surprise delivery charges at checkout.
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h4>How do I place an order and make payments?</h4>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          You can easily order directly via WhatsApp or by calling our customer care. We accept all major payment modes including Google Pay, PhonePe, Paytm, BHIM UPI, direct bank transfer, as well as Cash On Delivery (COD).
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h4>Are there any known side effects?</h4>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Our products are made from natural herbal extracts and vital nutrients designed for everyday wellness and do not cause dependency. However, if you are pregnant, nursing, or on prescription medication, consulting your physician is always advised.
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -1380,6 +1640,18 @@ nav{
 </footer>
 
 <script>
+// FAQ Accordion Toggle Interaction
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const allFaqs = document.querySelectorAll('.faq-item');
+  allFaqs.forEach(faq => {
+    if (faq !== item) {
+      faq.classList.remove('active');
+    }
+  });
+  item.classList.toggle('active');
+}
+
 // Reviews Slider Animation
 function slideReviews(direction) {
   const slider = document.getElementById('reviewsSlider');
