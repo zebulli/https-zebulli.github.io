@@ -1,0 +1,28 @@
+{
+  "background_color": "#ffffff",
+  "description": "Zebulli Wellness - Premium nutraceuticals for joint health, bone support, digestion and everyday wellness.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "zebulli",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "zebulli",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://zebulli.com/assets/Logo_BRWN.png",
+      "type": "image/png",
+      "sizes": "425x213",
+      "isSquare": false,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 425,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ],
+  "id": "/"
+}
