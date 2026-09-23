@@ -1365,7 +1365,7 @@ nav{
     <div class="faq-list">
       
       <!-- FAQ 1 -->
-       <div class="faq-item">
+      <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h4>Are Zebulli Wellness products safe and certified?</h4>
           <span class="faq-icon">+</span>
@@ -1640,6 +1640,23 @@ nav{
 </footer>
 
 <script>
+// Auto-hide Mobile Nav Menu on Link Click or Page Scroll
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks) {
+      navLinks.classList.remove('mobile-show');
+    }
+  });
+});
+
+window.addEventListener('scroll', () => {
+  const navLinks = document.querySelector('.nav-links');
+  if (navLinks && navLinks.classList.contains('mobile-show')) {
+    navLinks.classList.remove('mobile-show');
+  }
+}, { passive: true });
+
 // FAQ Accordion Toggle Interaction
 function toggleFaq(el) {
   const item = el.parentElement;
