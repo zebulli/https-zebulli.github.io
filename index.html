@@ -630,7 +630,7 @@
               <div class="price-row">
                 <span class="mrp">₹3,796</span>
                 <span class="sale-price">₹2,650/-</span>
-                <span class="discount-tag">30.19% OFF</span>
+                <span class="discount-tag">30% OFF</span>
               </div>
               <span class="free-shipping-tag">🚚 FREE DELIVERY</span>
             </div>
@@ -1777,39 +1777,60 @@
 
 
   <!-- ======================================================================
-       14. FOOTER SECTION
+       14. FOOTER SECTION (WITH POLICY LINKS)
   ====================================================================== -->
   <style>
     footer {
       position: relative;
       width: 100%;
       margin: 0;
-      padding: 20px 40px;
+      padding: 28px 40px 22px;
       background: #000000;
       border-top: 1px solid rgba(197, 160, 89, 0.3);
       box-sizing: border-box;
       clear: both;
     }
-    footer > div {
+    .footer-policy-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-policy-links a {
+      color: #aaa;
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: color 0.25s ease;
+      cursor: pointer;
+    }
+    .footer-policy-links a:hover {
+      color: var(--gold);
+      text-decoration: underline;
+    }
+    .footer-policy-links span {
+      color: rgba(225, 189, 85, 0.4);
+      font-size: 0.8rem;
+    }
+    .footer-bottom {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      max-width: 100%;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 16px;
     }
 
     @media(max-width:768px){
-      footer { padding: 18px 20px !important; }
-      footer > div {
-        display: flex !important;
+      footer { padding: 22px 20px !important; }
+      .footer-policy-links { gap: 10px; font-size: 0.74rem; }
+      .footer-bottom {
         flex-direction: column-reverse !important;
         gap: 8px !important;
         text-align: center !important;
       }
-      footer div {
+      .footer-bottom div {
         text-align: center !important;
         padding-right: 0 !important;
       }
@@ -1817,7 +1838,19 @@
   </style>
 
   <footer>
-    <div>
+    <!-- Policy Popup Trigger Links -->
+    <div class="footer-policy-links">
+      <a onclick="openPolicyModal('terms')">Terms & Conditions</a>
+      <span>•</span>
+      <a onclick="openPolicyModal('privacy')">Privacy Policy</a>
+      <span>•</span>
+      <a onclick="openPolicyModal('shipping')">Shipping Policy</a>
+      <span>•</span>
+      <a onclick="openPolicyModal('refund')">Return & Refund Policy</a>
+    </div>
+
+    <!-- Copyright and Tagline -->
+    <div class="footer-bottom">
       <div style="color: #888888; font-size: 0.70rem; text-align: left;">
         © 2026 Zebulli Wellness. All Rights Reserved.
       </div>
@@ -1829,7 +1862,103 @@
 
 
   <!-- ======================================================================
-       15. JAVASCRIPT CONTROLLERS (ORGANIZED BY FEATURE)
+       15. POPUP MODAL: POLICIES VIEWER
+  ====================================================================== -->
+  <style>
+    .policy-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 100000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .policy-modal.show {
+      display: flex;
+    }
+    .policy-modal-content {
+      background: #11110e;
+      border: 1px solid rgba(225, 189, 85, 0.45);
+      border-radius: 20px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85);
+      position: relative;
+      animation: popIn 0.25s ease-out;
+    }
+    .policy-modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .policy-modal-header h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 1.28rem;
+      margin: 0;
+    }
+    .policy-modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      color: #d2cfc4;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .policy-modal-body h4 {
+      color: #f7df8b;
+      margin: 14px 0 6px;
+      font-size: 0.98rem;
+    }
+    .policy-modal-body p {
+      margin-bottom: 10px;
+      color: #bbb;
+    }
+    .highlight-post {
+      background: rgba(225, 189, 85, 0.08);
+      border: 1px solid rgba(225, 189, 85, 0.3);
+      border-left: 3px solid var(--gold);
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin: 10px 0;
+    }
+    .policy-close-btn {
+      background: transparent;
+      border: none;
+      color: #888;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .policy-close-btn:hover {
+      color: #fff;
+    }
+  </style>
+
+  <div class="policy-modal" id="policyModal" onclick="closePolicyModal(event)">
+    <div class="policy-modal-content">
+      <div class="policy-modal-header">
+        <h3 id="policyModalTitle">Policy Details</h3>
+        <button class="policy-close-btn" onclick="closePolicyModal(event, true)">×</button>
+      </div>
+      <div class="policy-modal-body" id="policyModalBody">
+        <!-- Content dynamically injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================================
+       16. JAVASCRIPT CONTROLLERS (ORGANIZED BY FEATURE)
   ====================================================================== -->
   <script>
     /* -------------------------------------------------------------
@@ -1960,6 +2089,106 @@
     function closePayModal(e, force = false) {
       if (force || e.target.id === 'payModal') {
         document.getElementById('payModal').classList.remove('show');
+      }
+    }
+
+
+    /* -------------------------------------------------------------
+       F. Policies Popup Modal Controls & Enhanced Content
+    ------------------------------------------------------------- */
+    const policyData = {
+      terms: {
+        title: "Terms & Conditions",
+        content: `
+          <h4>1. Nature of Product (Nutraceutical Disclaimer)</h4>
+          <p>These products are <b>Nutraceuticals / Food Supplements</b> and are not intended to diagnose, treat, cure, or prevent any disease. They are formulated to support everyday wellness and nutritional balance.</p>
+          
+          <h4>2. Health Results Variation</h4>
+          <p>Health benefits and noticeable results may vary from person to person depending on individual body types, age, physical activity, and daily lifestyle.</p>
+          
+          <h4>3. Recommended Usage & Dosage</h4>
+          <p>Customers are strictly advised to follow the recommended dosage mentioned on the product packaging label or as suggested at the time of purchase. Please do not exceed the stated daily dose.</p>
+          
+          <h4>4. Allergy Disclaimer</h4>
+          <p>Please check the comprehensive ingredients list printed on the outer packaging for any potential personal allergens before consumption.</p>
+
+          <h4>5. Pregnancy & Medical Conditions</h4>
+          <p>If you are pregnant, nursing, taking prescription medication, or have an existing medical condition, always consult your physician or specialist healthcare provider prior to use.</p>
+
+          <h4>6. Expiry & Storage Instructions</h4>
+          <p>Please verify the product safety seal and expiry date upon delivery. Store all bottles in a cool, dry place away from direct sunlight, moisture, and out of reach of children.</p>
+
+          <h4>7. Legal Jurisdiction</h4>
+          <p>All disputes, claims, or transactions related to Zebulli Wellness are subject to <b>Surat (Gujarat) jurisdiction only</b>.</p>
+        `
+      },
+      privacy: {
+        title: "Privacy Policy",
+        content: `
+          <h4>1. Information Collection</h4>
+          <p>At Zebulli Wellness, we respect your privacy. We collect customer information such as name, contact number, shipping address, and email strictly for processing orders, communicating dispatch details, and delivering authentic wellness products.</p>
+          
+          <h4>2. Data Security & Confidentiality</h4>
+          <p>We do not sell, rent, or lease your personal information to third parties. All personal contact details and transaction records are held securely in compliance with standard Indian consumer data security practices.</p>
+          
+          <h4>3. Communication & Consent</h4>
+          <p>By placing an order or contacting us via WhatsApp, you consent to receive order updates, delivery tracking messages, and customer assistance directly from Zebulli Wellness.</p>
+          
+          <h4>4. Contact for Privacy Inquiries</h4>
+          <p>If you have any questions regarding your private information, please email us at <b>zebulliwellness@gmail.com</b> or call <b>+91 81403 63150</b>.</p>
+        `
+      },
+      shipping: {
+        title: "Shipping & Delivery Policy",
+        content: `
+          <h4>1. 100% Free Shipping Across India</h4>
+          <p>Zebulli Wellness offers <b>Free Shipping & Delivery</b> on all individual products and combo packs across India. There are no hidden packaging or convenience charges at checkout.</p>
+          
+          <h4>2. Primary Shipping Partner: India Post</h4>
+          <div class="highlight-post">
+            <b style="color: #f7df8b; display: block; margin-bottom: 4px;">📮 Trusted Nationwide Delivery via India Post</b>
+            <span style="color: #ddd;">The majority of our parcels are securely shipped via <b>India Post (Speed Post)</b>, ensuring reliable doorstep delivery across every pin code, urban cities, towns, and remote rural areas across India.</span>
+          </div>
+
+          <h4>3. Express Logistics Partners</h4>
+          <p>Depending on express delivery availability and destination pin codes, we also partner with leading logistics carriers including <b>Tirupati, Maruti, Nandan, Delhivery, DTDC & Blue Dart</b>.</p>
+          
+          <h4>4. Processing & Delivery Timeline</h4>
+          <p>Orders are dispatched within 24 to 48 hours of confirmation. Delivery across Gujarat typically takes <b>2–5 business days</b>, while delivery to other states takes approximately <b>4–10 business days</b>.</p>
+          
+          <h4>5. Real-Time Consignment Tracking</h4>
+          <p>Once dispatched, a tracking consignment number (India Post tracking link or courier AWB) is shared directly on your WhatsApp or via SMS for real-time tracking.</p>
+        `
+      },
+      refund: {
+        title: "Return & Refund Policy",
+        content: `
+          <h4>1. Strict No-Return Policy on Opened Items</h4>
+          <p>Due to the hygienic, consumable, and sensitive nature of health supplements, <b>products once opened, used, or with broken seals will NOT be returned, replaced, or refunded</b>.</p>
+          
+          <h4>2. Damaged in Transit or Wrong Item Delivered</h4>
+          <p>If you receive a parcel with severe outer damage, leakage, or an incorrect item, you must notify us within <b>48 hours of delivery</b>.</p>
+          
+          <h4>3. Mandatory Unboxing Proof</h4>
+          <p>To be eligible for an exchange or resolution, clear photo/video proof showing the unopened damaged item and outer shipping label must be provided.</p>
+          
+          <h4>4. How to Contact Support</h4>
+          <p>Message our customer care team on WhatsApp at <b>+91 88662 57788</b> or call <b>+91 81403 63150</b> with your order details for fast assistance.</p>
+        `
+      }
+    };
+
+    function openPolicyModal(policyType) {
+      const data = policyData[policyType];
+      if (!data) return;
+      document.getElementById('policyModalTitle').innerText = data.title;
+      document.getElementById('policyModalBody').innerHTML = data.content;
+      document.getElementById('policyModal').classList.add('show');
+    }
+
+    function closePolicyModal(e, force = false) {
+      if (force || e.target.id === 'policyModal') {
+        document.getElementById('policyModal').classList.remove('show');
       }
     }
   </script>
