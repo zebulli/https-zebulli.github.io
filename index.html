@@ -163,6 +163,23 @@
           "availability": "https://schema.org/InStock",
           "url": "https://zebulli.com/#products"
         }
+      },
+      {
+        "@type": "Product",
+        "name": "Active Pain Guard Oil",
+        "image": "https://zebulli.com/assets/active-pain-guard-oil.png",
+        "description": "100% Ayurvedic Pain Relief Oil for Joint & Muscular Pain, Arthritis, Back Ache, Sprains and Sports Injury.",
+        "brand": {
+          "@type": "Brand",
+          "name": "ZÉBULLI"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "INR",
+          "price": "249",
+          "availability": "https://schema.org/InStock",
+          "url": "https://zebulli.com/#products"
+        }
       }
     ]
   }
@@ -756,6 +773,31 @@
             </ul>
             <div class="dose"><b>Dosage:</b> 1 teaspoon (3–6 gm) with warm water at bedtime</div>
             <a class="order" href="https://wa.me/918140363150?text=Hello%20Zebulli%20Wellness%2C%20I%20would%20like%20to%20get%20more%20details%20or%20place%20an%20order%20for%20Active%20Digestive%20%2B." target="_blank">Order on WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Product 6: ACTIVE PAIN GUARD OIL -->
+        <article class="card">
+          <div class="product-image"><img src="assets/active-pain-guard-oil.png" alt="Active Pain Guard Oil"></div>
+          <div class="card-body">
+            <span class="badge">100% Ayurvedic • 100ml Oil</span>
+            <h3>ACTIVE PAIN GUARD OIL</h3>
+            <p class="formula">Ashwagandha, Guggal, Nilgiri, Kapoor & Til Oil</p>
+            <div class="price-box">
+              <div class="price-row">
+                <span class="mrp">₹299</span>
+                <span class="sale-price">₹249/-</span>
+                <span class="discount-tag">16.70% OFF</span>
+              </div>
+              <span class="free-shipping-tag">🚚 FREE DELIVERY</span>
+            </div>
+            <ul class="benefits">
+              <li>Targeted relief for Joint, Knee & Back pain</li>
+              <li>Relieves muscular stiffness, sprains & cervical ache</li>
+              <li>Deep penetration & fast-absorbing non-sticky formula</li>
+            </ul>
+            <div class="dose"><b>Usage:</b> Take a few drops, gently massage on affected area for 5–10 mins</div>
+            <a class="order" href="https://wa.me/918140363150?text=Hello%20Zebulli%20Wellness%2C%20I%20would%20like%20to%20get%20more%20details%20or%20place%20an%20order%20for%20Active%20Pain%20Guard%20Oil." target="_blank">Order on WhatsApp</a>
           </div>
         </article>
 
@@ -2187,8 +2229,8 @@
     }
 
     function closePolicyModal(e, force = false) {
-      if (force || e.target.id === 'policyModal') {
-        document.getElementById('policyModal').classList.remove('show');
+      if (force || e.target.id === 'payModal') {
+        document.getElementById('payModal').classList.remove('show');
       }
     }
   </script>
